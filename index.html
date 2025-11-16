@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <main id="content" class="py-4"></main>
+
+    <div id="footer"></div>
+
+    <script>
+      // Fungsi untuk memuat HTML ke dalam elemen tertentu (header/footer)
+      async function loadHTML(selector, file) {
+        const element = document.querySelector(selector);
+        try {
+          const response = await fetch(file);
+          if (!response.ok) throw new Error(`Gagal memuat ${file}`);
+          const html = await response.text();
+          element.innerHTML = html;
+        } catch (err) {
+          element.innerHTML = `<div class="text-danger">Error: ${err.message}</div>`;
+        }
+      }
+
+      // Fungsi untuk memuat semua halaman ke dalam #content
+      async function loadAllPages() {
+        const pages = ["home", "about", "resume", "portfolio"];
+        const main = document.getElementById("content");
+
+        for (const page of pages) {
+          try {
+            const response = await fetch(`components/${page}.html`);
+            if (!response.ok) throw new Error(`${page} tidak ditemukan`);
+            const html = await response.text();
+
+            // Bungkus tiap halaman dalam section dengan ID unik
+            const section = document.createElement("section");
+            section.id = page;
+            section.innerHTML = html;
+            section.classList.add("py-5");
+            main.appendChild(section);
+          } catch (err) {
+            console.error(err.message);
+          }
+        }
+      }
+
+      // Fungsi untuk scroll ke section berdasarkan hash
+      function scrollToSection() {
+        const hash = location.hash || "#home";
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      // Load header & footer, lalu halaman-halaman
+      (async function init() {
+        await loadHTML("#header", "partials/navbar.html");
+
+        // after header is injected, setup simple nav toggle
+        setupNavToggle();
+
+        await loadAllPages();
+        await loadHTML("#footer", "partials/footer.html");
+
+        scrollToSection();
+        window.addEventListener("hashchange", scrollToSection);
+      })();
+
+      // small helper to toggle mobile nav
+      function setupNavToggle() {
+        const btn = document.querySelector(".nav-toggle");
+        const navWrap = document.querySelector(".nav-wrap");
+        if (!btn || !navWrap) return;
+
+        const focusableSelector = "a, button";
+        let focusable = [];
+        let firstFocusable = null;
+        let lastFocusable = null;
+
+        function updateFocusable() {
+          focusable = Array.from(
+            navWrap.querySelectorAll(focusableSelector)
+          ).filter((el) => !el.hasAttribute("disabled"));
+          firstFocusable = focusable[0] || null;
+          lastFocusable = focusable[focusable.length - 1] || null;
+        }
+
+        function openNav() {
+          navWrap.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+          updateFocusable();
+          setTimeout(() => firstFocusable && firstFocusable.focus(), 120);
+          document.addEventListener("keydown", handleKeydown);
+        }
+
+        function closeNav() {
+          navWrap.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+          document.removeEventListener("keydown", handleKeydown);
+          btn.focus();
+        }
+
+        function handleKeydown(e) {
+          if (e.key === "Escape") {
+            closeNav();
+            return;
+          }
+          if (e.key === "Tab" && navWrap.classList.contains("open")) {
+            updateFocusable();
+            if (focusable.length === 0) {
+              e.preventDefault();
+              return;
+            }
+            if (e.shiftKey) {
+              if (document.activeElement === firstFocusable) {
+                e.preventDefault();
+                lastFocusable.focus();
+              }
+            } else {
+              if (document.activeElement === lastFocusable) {
+                e.preventDefault();
+                firstFocusable.focus();
+              }
+            }
+          }
+        }
+
+        btn.addEventListener("click", () => {
+          const expanded = btn.getAttribute("aria-expanded") === "true";
+          if (!expanded) openNav();
+          else closeNav();
+        });
+
+        // close menu when a link is clicked
+        navWrap.querySelectorAll("a").forEach((a) =>
+          a.addEventListener("click", () => {
+            closeNav();
+          })
+        );
+      }
+    </script>
+  </body>
+</html>

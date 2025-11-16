@@ -1,0 +1,602 @@
+:root {
+  --bg: #0b0b0d;
+  --panel: #0f1113;
+  --muted: #9aa3ad;
+  --accent: #40c4ff;
+  --text: #e9eef4;
+}
+
+/* Reset small items */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  font-family: "Poppins", Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Navbar (dark) */
+.navbar {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  padding: 18px 0;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  margin: 0 auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px; /* biar hover background nggak kotak keras */
+  transition: 0.25s ease; /* animasi halus */
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.12
+  ); /* sedikit lebih tegas dari 0.1 */
+  backdrop-filter: blur(3px); /* efek elegan (opsional) */
+}
+
+.logo {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Hamburger / mobile nav */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  padding: 8px;
+  cursor: pointer;
+}
+
+.nav-wrap {
+  display: block;
+}
+
+/* Section defaults loaded into index.js (section ids: home, about, resume, portfolio) */
+main#content {
+  display: block;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* slightly lighter overlay so background image remains visible */
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 11, 0.4),
+    rgba(2, 6, 11, 0.45)
+  );
+  z-index: 0;
+}
+
+section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HERO (home) */
+section#home {
+  min-height: 100vh;
+  /* use the actual background file present in assets/img */
+  background-image: url("../img/home.jpg"), url("/assets/img/home.jpg");
+  background-color: #070809; /* fallback color if image fails */
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 15px;
+  display: flex;
+}
+
+.hero-row {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: flex-start; /* pastikan isi tidak dipusatkan */
+  flex-direction: row-reverse; /* teks di kanan, gambar di kiri */
+}
+
+.hero-col {
+  /* default column behaviour; specific columns overridden below */
+  display: block;
+}
+
+.hero-text {
+  max-width: 560px; /* fixed content column so name stays right */
+  flex: 0 0 560px;
+  text-align: right; /* teks berada di kanan pada desktop */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* pastikan CTA dan socials sejajar di kanan */
+}
+
+.hero-image {
+  flex: 1 1 auto; /* image fills remaining space */
+  min-width: 220px;
+}
+
+.eyebrow {
+  letter-spacing: 3px;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0;
+}
+
+.hero-title {
+  font-size: 64px;
+  margin: 4px 0 6px;
+  line-height: 0.9;
+}
+
+.hero-sub {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: transparent;
+  border: 1px solid rgba(64, 196, 255, 0.16);
+  color: var(--text);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text);
+}
+
+/* Button hover / focus states */
+.btn {
+  transition: background-color 180ms ease, color 180ms ease,
+    transform 120ms ease, box-shadow 180ms ease;
+}
+.btn:hover,
+.btn:focus {
+  transform: translateY(-2px);
+}
+.btn-primary:hover {
+  /* filled white hover */
+  background: #ffffff;
+  color: var(--bg);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.btn-outline:hover {
+  /* outline becomes filled white on hover */
+  background: #ffffff;
+  color: var(--bg);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.btn:focus {
+  outline: 3px solid rgba(64, 196, 255, 0.12);
+  outline-offset: 4px;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.hero-image {
+  min-height: 360px;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ABOUT */
+section#about {
+  min-height: 85vh;
+  /* use existing home_bg.jpg as fallback for About */
+  background-image: url("../img/home_bg.jpg"), url("/assets/img/home_bg.jpg");
+  background-color: #08090a;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+/* RESUME section background */
+section#resume {
+  /* make resume visually match the theme: use background image and allow content-driven height */
+  min-height: 85vh;
+  /* use resume specific background if available */
+  background-image: url("../img/resume.jpg"), url("/assets/img/resume.jpg"),
+    url("../img/home_bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* slightly lighter bluish overlay for resume so background pattern shows through */
+section#resume::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 12, 34, 0.45),
+    rgba(5, 12, 34, 0.55)
+  );
+  z-index: 0;
+}
+
+/* PORTFOLIO section background */
+section#portfolio {
+  /* allow portfolio to grow with content instead of fixed viewport height */
+  min-height: auto;
+  background-image: url("../img/portfolio.jpg"),
+    url("/assets/img/portfolio.jpg"), url("../img/portfolio.jpg");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.about-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-content h2 {
+  letter-spacing: 2px;
+  margin: 0 0 8px;
+}
+
+.about-content .email {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.about-content .lead {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.about-photo {
+  height: 420px;
+  /* use existing image as fallback; replace with actual portrait if available */
+  background-image: url("../img/profile.jpeg"), url("/assets/img/profile.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.about-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 20px 0 14px;
+}
+.about-meta h4 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 15px;
+}
+.about-meta ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.meta-block {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Resume layout */
+.resume-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 32px;
+}
+.resume-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 36px;
+  align-items: start;
+}
+.resume-col h2 {
+  margin-top: 0;
+  color: var(--text);
+  letter-spacing: 2px;
+}
+.resume-col h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.resume-col h3 {
+  color: var(--accent);
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+.resume-col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.resume-col .muted {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin-bottom: 8px;
+}
+
+/* Portfolio */
+section#portfolio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: brightness(0.35) blur(2px);
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.portfolio-inner {
+  position: relative;
+  z-index: 1;
+  padding: 60px 32px;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.card {
+  padding: 18px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Card hover: slight scale + lift for portfolio preview */
+.card {
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 220ms ease, opacity 180ms ease, border-color 180ms ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.card:hover,
+.card:focus {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  z-index: 20;
+  opacity: 1;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* On small screens reduce scale to avoid layout issues */
+@media (max-width: 600px) {
+  .card:hover,
+  .card:focus {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+/* make card become white on hover with dark text for contrast */
+.card,
+.card h4,
+.card p {
+  transition: background-color 220ms ease, color 220ms ease,
+    border-color 180ms ease;
+}
+.card:hover,
+.card:focus {
+  background: #ffffff;
+  color: var(--bg);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.card:hover h4,
+.card:focus h4 {
+  color: var(--bg);
+}
+.card:hover p,
+.card:focus p {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 900px) {
+  .resume-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-row {
+    flex-direction: column-reverse;
+    align-items: flex-start; /* pastikan kolom tidak dipusatkan saat stack */
+  }
+
+  /* show hamburger and hide inline links */
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .nav-wrap {
+    position: absolute;
+    inset: 64px 18px auto 18px;
+    background: rgba(10, 10, 12, 0.96);
+    border-radius: 10px;
+    display: block; /* keep in flow but hidden via transform/opacity */
+    padding: 18px;
+    transform: translateY(-8px) scaleY(0.98);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 200ms ease, opacity 200ms ease;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  }
+  .nav-wrap.open {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 260px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    height: 300px;
+    margin-top: 18px;
+  }
+
+  .hero-inner {
+    padding: 40px 20px;
+  }
+
+  /* when stacked on mobile, make text full width and left-aligned */
+  .hero-text {
+    flex: 0 0 auto;
+    max-width: 100%;
+    text-align: left;
+    margin-bottom: 18px;
+    align-items: flex-start; /* reset alignment for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Footer */
+.footer {
+  padding: 28px 0;
+  background: transparent;
+}
+
+.footer .container {
+  width: 92%;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
