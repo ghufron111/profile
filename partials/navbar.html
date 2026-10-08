@@ -1,6 +1,8 @@
 <div class="navbar">
   <div class="container">
-    <a href="#home" class="logo">MyWebsite</a>
+    <a href="#home" class="logo">
+      <span class="logo-accent">G</span>hufron<span class="logo-dot">.</span>
+    </a>
 
     <button
       class="nav-toggle"
@@ -8,28 +10,36 @@
       aria-expanded="false"
     >
       <svg
-        width="24"
-        height="24"
+        width="22"
+        height="22"
         viewBox="0 0 24 24"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       >
-        <path
-          d="M3 6h18M3 12h18M3 18h18"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
       </svg>
     </button>
 
-    <nav class="nav-wrap">
+    <div class="nav-wrap">
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#home" class="active">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
         <li><a href="#resume">Resume</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Kontak</a></li>
       </ul>
-    </nav>
+
+      <div class="nav-action">
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          Siap Bekerja
+        </span>
+      </div>
+    </div>
   </div>
 </div>

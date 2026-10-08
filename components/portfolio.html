@@ -1,45 +1,227 @@
-<div class="container about-inner portfolio-inner">
-  <h2>Portfolio</h2>
+<div class="container">
+  <div class="section-header">
+    <span class="section-tag">Karya & Proyek</span>
+    <h2 class="section-title">Portofolio Unggulan</h2>
+    <p class="section-desc">
+      Koleksi proyek nyata yang mencakup aplikasi web, analisis Machine Learning, hingga emulator web interaktif.
+    </p>
+  </div>
+
+  <!-- Filter Pills -->
+  <div class="portfolio-filter">
+    <button class="filter-btn active" data-filter="all">Semua Proyek</button>
+    <button class="filter-btn" data-filter="web">Web Application</button>
+    <button class="filter-btn" data-filter="ml">Machine Learning / AI</button>
+    <button class="filter-btn" data-filter="tool">Interactive Tools</button>
+  </div>
 
   <div class="portfolio-grid">
-    <a
-      href="https://github.com/ghufron111/spk_pns"
-      class="card meta-block portfolio-card"
-    >
-      <h4>Sistem Rekomendasi Kenaikan Pangkat</h4>
-      <p>Aplikasi web untuk rekomendasi kenaikan pangkat PNS</p>
-    </a>
+    <!-- Card 1: GBA Online -->
+    <div class="portfolio-card-wrap" data-category="tool">
+      <div class="portfolio-card interactive-card">
+        <div>
+          <div class="project-meta-top">
+            <span class="project-badge featured">⭐ Live Web Emulator</span>
+            <a
+              href="https://ghufron111.github.io/gba_online/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-icon-link"
+              title="Buka Demo"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
 
-    <a
-      href="https://github.com/ghufron111/travel"
-      class="card meta-block portfolio-card"
-    >
-      <h4>Aplikasi Web Travel</h4>
-      <p>Aplikasi web untuk pemesanan tiket travel</p>
-    </a>
+          <h3 class="project-title">GBA Online — Web Emulator</h3>
+          <p class="project-desc">
+            Emulator konsol Game Boy Advance berbasis web yang berjalan langsung di browser. Mengimplementasikan visual rendering fluid, virtual gamepad, keybindings responsif, dan dukungan file ROM langsung tanpa instalasi tambahan.
+          </p>
 
-    <a
-      href="https://github.com/ghufron111/202153111_Analisis-Sentimen-MobileJKN"
-      class="card meta-block portfolio-card"
-    >
-      <h4>Sentiment Analysis Mobile JKN</h4>
-      <p>Aplikasi analisis ulasan pengguna aplikasi Mobile JKN</p>
-    </a>
+          <div class="project-tech-stack">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5 Canvas</span>
+            <span class="tech-tag">Web Audio</span>
+            <span class="tech-tag">CSS3</span>
+          </div>
+        </div>
 
-        <a
-      href="https://ghufron111.github.io/gba_online/"
-      class="card meta-block portfolio-card"
-    >
-      <h4>GBA Online</h4>
-      <p>Emulator berbasis web untuk GBA</p>
-    </a>
+        <div class="project-links">
+          <a
+            href="https://ghufron111.github.io/gba_online/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-btn project-btn-primary"
+          >
+            <span>Mainkan Sekarang</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </a>
+          <a
+            href="https://github.com/ghufron111"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-btn project-btn-secondary"
+          >
+            <span>GitHub Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Sentiment Analysis Mobile JKN -->
+    <div class="portfolio-card-wrap" data-category="ml">
+      <div class="portfolio-card interactive-card">
+        <div>
+          <div class="project-meta-top">
+            <span class="project-badge">Deep Learning / NLP</span>
+            <a
+              href="https://github.com/ghufron111/202153111_Analisis-Sentimen-MobileJKN"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-icon-link"
+              title="Lihat Source Code"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+          </div>
+
+          <h3 class="project-title">Sentiment Analysis Mobile JKN</h3>
+          <p class="project-desc">
+            Sistem analisis sentimen berbasis deep learning (LSTM) untuk mengekstraksi dan mengklasifikasikan ulasan pengguna aplikasi Mobile JKN di Google Play Store ke dalam sentimen positif dan negatif dengan akurasi teruji.
+          </p>
+
+          <div class="project-tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">LSTM / NLP</span>
+            <span class="tech-tag">Pandas</span>
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a
+            href="https://github.com/ghufron111/202153111_Analisis-Sentimen-MobileJKN"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-btn project-btn-primary"
+          >
+            <span>Lihat Repositori</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: SPK PNS -->
+    <div class="portfolio-card-wrap" data-category="web">
+      <div class="portfolio-card interactive-card">
+        <div>
+          <div class="project-meta-top">
+            <span class="project-badge">Decision Support System</span>
+            <a
+              href="https://github.com/ghufron111/spk_pns"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-icon-link"
+              title="Lihat Source Code"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+          </div>
+
+          <h3 class="project-title">Sistem Rekomendasi Kenaikan Pangkat</h3>
+          <p class="project-desc">
+            Aplikasi web Sistem Pendukung Keputusan (SPK) untuk menentukan rekomendasi kenaikan pangkat PNS berdasarkan kriteria kinerja, masa kerja, dan penilaian objektif dengan kalkulasi otomatis.
+          </p>
+
+          <div class="project-tech-stack">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Web Architecture</span>
+            <span class="tech-tag">SPK / DSS</span>
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a
+            href="https://github.com/ghufron111/spk_pns"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-btn project-btn-primary"
+          >
+            <span>Lihat Repositori</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Web Travel -->
+    <div class="portfolio-card-wrap" data-category="web">
+      <div class="portfolio-card interactive-card">
+        <div>
+          <div class="project-meta-top">
+            <span class="project-badge">Web Application</span>
+            <a
+              href="https://github.com/ghufron111/travel"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-icon-link"
+              title="Lihat Source Code"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+          </div>
+
+          <h3 class="project-title">Aplikasi Web Tiket Travel</h3>
+          <p class="project-desc">
+            Platform web manajemen pemesanan travel yang mencakup pemilihan rute, manajemen kursi penumpang, perhitungan tarif, dan database reservasi pelanggan yang aman dan terstruktur.
+          </p>
+
+          <div class="project-tech-stack">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive UI</span>
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a
+            href="https://github.com/ghufron111/travel"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-btn project-btn-primary"
+          >
+            <span>Lihat Repositori</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
-  .portfolio-card {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-</style>

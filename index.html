@@ -1,155 +1,830 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Ghufron Tamami | Fullstack Developer & Machine Learning</title>
+    <meta
+      name="description"
+      content="Portofolio resmi Ghufron Tamami - Sarjana Sistem Informasi UMK & Alumni Bangkit 2024 Machine Learning Cohort. Mengembangkan solusi web modern dan implementasi Deep Learning."
+    />
+    <meta name="author" content="Ghufron Tamami" />
+    <meta
+      name="keywords"
+      content="Ghufron Tamami, Fullstack Developer, Machine Learning, Web Developer Kudus, PHP, Laravel, Python, LSTM, Bangkit Academy"
+    />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ghufron Tamami | Fullstack Developer & Machine Learning" />
+    <meta
+      property="og:description"
+      content="Portofolio resmi Ghufron Tamami - Web Developer & Machine Learning Enthusiast."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/profile.jpeg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <div id="header"></div>
+    <!-- Top Scroll Progress Bar -->
+    <div id="scroll-progress-bar"></div>
 
-    <main id="content" class="py-4"></main>
+    <!-- Ambient Glow Effects -->
+    <div class="ambient-glow" aria-hidden="true">
+      <div class="ambient-orb ambient-orb-1"></div>
+      <div class="ambient-orb ambient-orb-2"></div>
+      <div class="ambient-orb ambient-orb-3"></div>
+    </div>
 
-    <div id="footer"></div>
+    <!-- Header (Navbar) -->
+    <div id="header">
+      <div class="navbar">
+        <div class="container">
+          <a href="#home" class="logo">
+            <span class="logo-accent">G</span>hufron<span class="logo-dot">.</span>
+          </a>
 
-    <script>
-      // Fungsi untuk memuat HTML ke dalam elemen tertentu (header/footer)
-      async function loadHTML(selector, file) {
-        const element = document.querySelector(selector);
-        try {
-          const response = await fetch(file);
-          if (!response.ok) throw new Error(`Gagal memuat ${file}`);
-          const html = await response.text();
-          element.innerHTML = html;
-        } catch (err) {
-          element.innerHTML = `<div class="text-danger">Error: ${err.message}</div>`;
-        }
-      }
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
 
-      // Fungsi untuk memuat semua halaman ke dalam #content
-      async function loadAllPages() {
-        const pages = ["home", "about", "resume", "portfolio"];
-        const main = document.getElementById("content");
+          <div class="nav-wrap">
+            <ul class="nav-links">
+              <li><a href="#home" class="active">Beranda</a></li>
+              <li><a href="#about">Tentang</a></li>
+              <li><a href="#resume">Resume</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact">Kontak</a></li>
+            </ul>
 
-        for (const page of pages) {
-          try {
-            const response = await fetch(`components/${page}.html`);
-            if (!response.ok) throw new Error(`${page} tidak ditemukan`);
-            const html = await response.text();
+            <div class="nav-action">
+              <span class="status-pill">
+                <span class="status-dot"></span>
+                Siap Bekerja
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            // Bungkus tiap halaman dalam section dengan ID unik
-            const section = document.createElement("section");
-            section.id = page;
-            section.innerHTML = html;
-            section.classList.add("py-5");
-            main.appendChild(section);
-          } catch (err) {
-            console.error(err.message);
-          }
-        }
-      }
+    <!-- Main Content Container with Direct Fallback & Modular Support -->
+    <main id="content">
+      <!-- Section 1: Home (Hero) -->
+      <section id="home">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="hero-badge">
+                <span>👋 Halo, Selamat Datang</span>
+              </div>
 
-      // Fungsi untuk scroll ke section berdasarkan hash
-      function scrollToSection() {
-        const hash = location.hash || "#home";
-        const target = document.querySelector(hash);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      }
+              <h1 class="hero-title">
+                Ghufron <span class="gradient-text">Tamami</span>
+              </h1>
 
-      // Load header & footer, lalu halaman-halaman
-      (async function init() {
-        await loadHTML("#header", "partials/navbar.html");
+              <div class="hero-roles">
+                <span>Saya seorang</span>
+                <span class="typewriter-wrap">
+                  <span id="typewriter-text">Fullstack Developer</span><span class="cursor-blink"></span>
+                </span>
+              </div>
 
-        // after header is injected, setup simple nav toggle
-        setupNavToggle();
+              <p class="hero-desc">
+                Sarjana Sistem Informasi Universitas Muria Kudus & Alumni Bangkit Academy 2024 (Machine Learning Cohort). Berfokus pada pembangunan aplikasi web modern, RESTful API, dan penerapan kecerdasan buatan (Machine Learning / Deep Learning).
+              </p>
 
-        await loadAllPages();
-        await loadHTML("#footer", "partials/footer.html");
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#portfolio">
+                  <span>Lihat Portfolio</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+                <a class="btn btn-outline" href="#resume">
+                  <span>Resume & Skill</span>
+                </a>
+                <a class="btn btn-outline" href="#contact">
+                  <span>Hubungi Saya</span>
+                </a>
+              </div>
 
-        scrollToSection();
-        window.addEventListener("hashchange", scrollToSection);
-      })();
+              <div class="socials-row" aria-label="Media Sosial">
+                <a
+                  href="https://github.com/ghufron111"
+                  class="social-btn"
+                  aria-label="GitHub Profile"
+                  title="GitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg width="19" height="19" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                  </svg>
+                </a>
 
-      // small helper to toggle mobile nav
-      function setupNavToggle() {
-        const btn = document.querySelector(".nav-toggle");
-        const navWrap = document.querySelector(".nav-wrap");
-        if (!btn || !navWrap) return;
+                <a
+                  href="https://www.linkedin.com/in/ghufron-tamami/"
+                  class="social-btn"
+                  aria-label="LinkedIn Profile"
+                  title="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg width="19" height="19" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                  </svg>
+                </a>
 
-        const focusableSelector = "a, button";
-        let focusable = [];
-        let firstFocusable = null;
-        let lastFocusable = null;
+                <a
+                  href="https://www.instagram.com/ghufront/"
+                  class="social-btn"
+                  aria-label="Instagram Profile"
+                  title="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg width="19" height="19" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                  </svg>
+                </a>
 
-        function updateFocusable() {
-          focusable = Array.from(
-            navWrap.querySelectorAll(focusableSelector)
-          ).filter((el) => !el.hasAttribute("disabled"));
-          firstFocusable = focusable[0] || null;
-          lastFocusable = focusable[focusable.length - 1] || null;
-        }
+                <a
+                  href="mailto:ghufrontamami1@gmail.com"
+                  class="social-btn"
+                  aria-label="Kirim Email"
+                  title="Kirim Email"
+                >
+                  <svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </a>
+              </div>
 
-        function openNav() {
-          navWrap.classList.add("open");
-          btn.setAttribute("aria-expanded", "true");
-          updateFocusable();
-          setTimeout(() => firstFocusable && firstFocusable.focus(), 120);
-          document.addEventListener("keydown", handleKeydown);
-        }
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <span class="stat-number">S.Kom<span class="highlight">.</span></span>
+                  <span class="stat-label">Sistem Informasi UMK</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">2024<span class="highlight">✦</span></span>
+                  <span class="stat-label">Bangkit ML Graduate</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">4<span class="highlight">+</span></span>
+                  <span class="stat-label">Web & AI Projects</span>
+                </div>
+              </div>
+            </div>
 
-        function closeNav() {
-          navWrap.classList.remove("open");
-          btn.setAttribute("aria-expanded", "false");
-          document.removeEventListener("keydown", handleKeydown);
-          btn.focus();
-        }
+            <div class="hero-visual">
+              <div class="avatar-card interactive-card">
+                <div class="avatar-inner">
+                  <img
+                    src="assets/img/profile.jpeg"
+                    alt="Ghufron Tamami"
+                    class="avatar-img"
+                  />
+                  <div class="avatar-overlay">
+                    <div class="avatar-info">
+                      <h3>Ghufron Tamami</h3>
+                      <p>📍 Kudus, Jawa Tengah</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        function handleKeydown(e) {
-          if (e.key === "Escape") {
-            closeNav();
-            return;
-          }
-          if (e.key === "Tab" && navWrap.classList.contains("open")) {
-            updateFocusable();
-            if (focusable.length === 0) {
-              e.preventDefault();
-              return;
-            }
-            if (e.shiftKey) {
-              if (document.activeElement === firstFocusable) {
-                e.preventDefault();
-                lastFocusable.focus();
-              }
-            } else {
-              if (document.activeElement === lastFocusable) {
-                e.preventDefault();
-                firstFocusable.focus();
-              }
-            }
-          }
-        }
+              <!-- Floating Tech Pills -->
+              <div class="float-tag float-tag-1">
+                <span class="tech-icon">🐘</span>
+                <span>PHP / Laravel</span>
+              </div>
 
-        btn.addEventListener("click", () => {
-          const expanded = btn.getAttribute("aria-expanded") === "true";
-          if (!expanded) openNav();
-          else closeNav();
-        });
+              <div class="float-tag float-tag-2">
+                <span class="tech-icon">🐍</span>
+                <span>Python & ML</span>
+              </div>
 
-        // close menu when a link is clicked
-        navWrap.querySelectorAll("a").forEach((a) =>
-          a.addEventListener("click", () => {
-            closeNav();
-          })
-        );
-      }
-    </script>
+              <div class="float-tag float-tag-3">
+                <span class="tech-icon">⚡</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: About -->
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Tentang Saya</span>
+            <h2 class="section-title">Mengenal Saya Lebih Dekat</h2>
+            <p class="section-desc">
+              Menggabungkan logika rekayasa perangkat lunak dengan eksplorasi kecerdasan buatan untuk membangun produk digital yang bermanfaat.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card-left interactive-card">
+              <div class="about-photo-wrap">
+                <img src="assets/img/profile.jpeg" alt="Ghufron Tamami" />
+              </div>
+
+              <div class="about-mini-details">
+                <div class="mini-detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Kudus, Jawa Tengah, Indonesia</span>
+                </div>
+
+                <div class="mini-detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                  <span>S1 Sistem Informasi (UMK 2021-2025)</span>
+                </div>
+
+                <div class="mini-detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                  <span>Web Development & Machine Learning</span>
+                </div>
+
+                <button class="copy-email-btn" data-copy-email="ghufrontamami1@gmail.com" title="Klik untuk salin email">
+                  <span>ghufrontamami1@gmail.com</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="about-text">
+              <h3>Pengembang Berorientasi Solusi & Pembelajar Cepat</h3>
+              <p>
+                Saya adalah Sarjana Sistem Informasi dari <strong>Universitas Muria Kudus</strong> yang memiliki antusiasme tinggi dalam rekayasa perangkat lunak dan kecerdasan buatan. Selama masa studi, saya telah merancang dan mengimplementasikan berbagai proyek aplikasi web, mulai dari sistem rekomendasi hingga platform pemesanan.
+              </p>
+              <p>
+                Pengalaman di <strong>Bangkit Academy 2024 (Machine Learning Path)</strong> yang diselenggarakan oleh Google, GoTo, dan Traveloka semakin memperdalam kompetensi saya dalam data science, pemodelan Deep Learning (LSTM, NLP, CNN), serta integrasi model prediktif ke dalam aplikasi produksi.
+              </p>
+
+              <div class="core-pillars">
+                <div class="pillar-card">
+                  <div class="pillar-icon">🌐</div>
+                  <h4>Fullstack Web</h4>
+                  <p>Membangun web terstruktur dengan PHP, Laravel, JavaScript, HTML5/CSS3, dan database MySQL.</p>
+                </div>
+
+                <div class="pillar-card">
+                  <div class="pillar-icon">🤖</div>
+                  <h4>Machine Learning & NLP</h4>
+                  <p>Pengembangan model AI dengan Python, analisis sentimen berbasis LSTM, dan data processing.</p>
+                </div>
+
+                <div class="pillar-card">
+                  <div class="pillar-icon">📊</div>
+                  <h4>Sistem Informasi & ERP</h4>
+                  <p>Pemahaman alur bisnis, analisis kebutuhan sistem (SPK / DSS), serta manajemen basis data relasional.</p>
+                </div>
+
+                <div class="pillar-card">
+                  <div class="pillar-icon">🚀</div>
+                  <h4>Adaptif & Kolaboratif</h4>
+                  <p>Terbiasa bekerja dalam tim, manajemen versi menggunakan Git/GitHub, dan continuous learning.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Resume -->
+      <section id="resume">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Jejak Karir & Kemampuan</span>
+            <h2 class="section-title">Pendidikan, Pengalaman & Keahlian</h2>
+            <p class="section-desc">
+              Ringkasan perjalanan akademis, pelatihan profesional, serta keahlian teknis yang saya kuasai.
+            </p>
+          </div>
+
+          <div class="resume-layout">
+            <!-- Kolom 1: Pendidikan -->
+            <div class="resume-column">
+              <h3 class="resume-column-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                Pendidikan & Studi
+              </h3>
+
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-card">
+                    <span class="timeline-period">2021 — 2025</span>
+                    <h4 class="timeline-title">Universitas Muria Kudus</h4>
+                    <div class="timeline-subtitle">S1 Sistem Informasi — Sarjana Komputer (S.Kom)</div>
+                    <ul>
+                      <li>Fokus pada Rekayasa Perangkat Lunak, Basis Data, dan Sistem Informasi Manajemen.</li>
+                      <li>Menyelesaikan penelitian dan implementasi sistem informasi berbasis web serta Machine Learning.</li>
+                      <li>Aktif mengerjakan berbagai project aplikasi web akademis dan praktis.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-card">
+                    <span class="timeline-period">Feb 2024 — Jul 2024</span>
+                    <h4 class="timeline-title">Bangkit Academy led by Google, GoTo, Traveloka</h4>
+                    <div class="timeline-subtitle">Machine Learning Cohort Graduate</div>
+                    <ul>
+                      <li>Mendalami Deep Learning, Computer Vision (CNN), Natural Language Processing (NLP), dan Machine Learning Engineering.</li>
+                      <li>Membangun pipeline model LSTM untuk analisis sentimen ulasan pengguna aplikasi Mobile JKN.</li>
+                      <li>Berkolaborasi lintas disiplin (Mobile & Cloud Computing) dalam pengembangan Capstone Project.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kolom 2: Pengalaman Proyek -->
+            <div class="resume-column">
+              <h3 class="resume-column-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                Pengalaman Proyek
+              </h3>
+
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-card">
+                    <span class="timeline-period">2024 — 2025</span>
+                    <h4 class="timeline-title">Web & AI Independent Developer</h4>
+                    <div class="timeline-subtitle">Personal & Client Projects</div>
+                    <ul>
+                      <li>Merancang dan mendeploy aplikasi web sistem rekomendasi kenaikan pangkat (SPK PNS).</li>
+                      <li>Membangun platform pemesanan tiket travel terintegrasi dengan database dinamis.</li>
+                      <li>Mengembangkan web emulator Game Boy Advance (GBA Online) dengan performa tinggi.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-card">
+                    <span class="timeline-period">2024</span>
+                    <h4 class="timeline-title">Machine Learning Researcher & Developer</h4>
+                    <div class="timeline-subtitle">Sentiment Analysis & Predictive Modeling</div>
+                    <ul>
+                      <li>Eksplorasi pengolahan teks berbahasa Indonesia dengan teknik tokenisasi dan stemming NLP.</li>
+                      <li>Melatih dan menguji arsitektur jaringan LSTM untuk klasifikasi sentimen positif/negatif.</li>
+                      <li>Evaluasi model dengan metrik akurasi, confusion matrix, dan ROC-AUC.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Breakdown -->
+          <div class="skills-container">
+            <h3 class="skills-title">Keahlian & Penguasaan Teknologi</h3>
+
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4><span>🌐</span> Backend & Web</h4>
+                <div class="skill-tags">
+                  <span class="skill-pill">PHP</span>
+                  <span class="skill-pill">Laravel</span>
+                  <span class="skill-pill">Node.js</span>
+                  <span class="skill-pill">RESTful API</span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4><span>⚡</span> Frontend</h4>
+                <div class="skill-tags">
+                  <span class="skill-pill">JavaScript (ES6+)</span>
+                  <span class="skill-pill">React / Next.js</span>
+                  <span class="skill-pill">HTML5</span>
+                  <span class="skill-pill">CSS3 Modern</span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4><span>🤖</span> AI & Machine Learning</h4>
+                <div class="skill-tags">
+                  <span class="skill-pill">Python</span>
+                  <span class="skill-pill">TensorFlow / Keras</span>
+                  <span class="skill-pill">NLP & LSTM</span>
+                  <span class="skill-pill">Data Modeling</span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4><span>🛠️</span> Database & Tools</h4>
+                <div class="skill-tags">
+                  <span class="skill-pill">MySQL</span>
+                  <span class="skill-pill">Git & GitHub</span>
+                  <span class="skill-pill">Postman</span>
+                  <span class="skill-pill">VS Code</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Portfolio -->
+      <section id="portfolio">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Karya & Proyek</span>
+            <h2 class="section-title">Portofolio Unggulan</h2>
+            <p class="section-desc">
+              Koleksi proyek nyata yang mencakup aplikasi web, analisis Machine Learning, hingga emulator web interaktif.
+            </p>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all">Semua Proyek</button>
+            <button class="filter-btn" data-filter="web">Web Application</button>
+            <button class="filter-btn" data-filter="ml">Machine Learning / AI</button>
+            <button class="filter-btn" data-filter="tool">Interactive Tools</button>
+          </div>
+
+          <div class="portfolio-grid">
+            <!-- Card 1: GBA Online -->
+            <div class="portfolio-card-wrap" data-category="tool">
+              <div class="portfolio-card interactive-card">
+                <div>
+                  <div class="project-meta-top">
+                    <span class="project-badge featured">⭐ Live Web Emulator</span>
+                    <a
+                      href="https://ghufron111.github.io/gba_online/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-icon-link"
+                      title="Buka Demo"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <h3 class="project-title">GBA Online — Web Emulator</h3>
+                  <p class="project-desc">
+                    Emulator konsol Game Boy Advance berbasis web yang berjalan langsung di browser. Mengimplementasikan visual rendering fluid, virtual gamepad, keybindings responsif, dan dukungan file ROM langsung tanpa instalasi tambahan.
+                  </p>
+
+                  <div class="project-tech-stack">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">HTML5 Canvas</span>
+                    <span class="tech-tag">Web Audio</span>
+                    <span class="tech-tag">CSS3</span>
+                  </div>
+                </div>
+
+                <div class="project-links">
+                  <a
+                    href="https://ghufron111.github.io/gba_online/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn project-btn-primary"
+                  >
+                    <span>Mainkan Sekarang</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://github.com/ghufron111"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn project-btn-secondary"
+                  >
+                    <span>GitHub Profile</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Sentiment Analysis Mobile JKN -->
+            <div class="portfolio-card-wrap" data-category="ml">
+              <div class="portfolio-card interactive-card">
+                <div>
+                  <div class="project-meta-top">
+                    <span class="project-badge">Deep Learning / NLP</span>
+                    <a
+                      href="https://github.com/ghufron111/202153111_Analisis-Sentimen-MobileJKN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-icon-link"
+                      title="Lihat Source Code"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <h3 class="project-title">Sentiment Analysis Mobile JKN</h3>
+                  <p class="project-desc">
+                    Sistem analisis sentimen berbasis deep learning (LSTM) untuk mengekstraksi dan mengklasifikasikan ulasan pengguna aplikasi Mobile JKN di Google Play Store ke dalam sentimen positif dan negatif dengan akurasi teruji.
+                  </p>
+
+                  <div class="project-tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">LSTM / NLP</span>
+                    <span class="tech-tag">Pandas</span>
+                  </div>
+                </div>
+
+                <div class="project-links">
+                  <a
+                    href="https://github.com/ghufron111/202153111_Analisis-Sentimen-MobileJKN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn project-btn-primary"
+                  >
+                    <span>Lihat Repositori</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: SPK PNS -->
+            <div class="portfolio-card-wrap" data-category="web">
+              <div class="portfolio-card interactive-card">
+                <div>
+                  <div class="project-meta-top">
+                    <span class="project-badge">Decision Support System</span>
+                    <a
+                      href="https://github.com/ghufron111/spk_pns"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-icon-link"
+                      title="Lihat Source Code"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <h3 class="project-title">Sistem Rekomendasi Kenaikan Pangkat</h3>
+                  <p class="project-desc">
+                    Aplikasi web Sistem Pendukung Keputusan (SPK) untuk menentukan rekomendasi kenaikan pangkat PNS berdasarkan kriteria kinerja, masa kerja, dan penilaian objektif dengan kalkulasi otomatis.
+                  </p>
+
+                  <div class="project-tech-stack">
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Web Architecture</span>
+                    <span class="tech-tag">SPK / DSS</span>
+                  </div>
+                </div>
+
+                <div class="project-links">
+                  <a
+                    href="https://github.com/ghufron111/spk_pns"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn project-btn-primary"
+                  >
+                    <span>Lihat Repositori</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Web Travel -->
+            <div class="portfolio-card-wrap" data-category="web">
+              <div class="portfolio-card interactive-card">
+                <div>
+                  <div class="project-meta-top">
+                    <span class="project-badge">Web Application</span>
+                    <a
+                      href="https://github.com/ghufron111/travel"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-icon-link"
+                      title="Lihat Source Code"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <h3 class="project-title">Aplikasi Web Tiket Travel</h3>
+                  <p class="project-desc">
+                    Platform web manajemen pemesanan travel yang mencakup pemilihan rute, manajemen kursi penumpang, perhitungan tarif, dan database reservasi pelanggan yang aman dan terstruktur.
+                  </p>
+
+                  <div class="project-tech-stack">
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Responsive UI</span>
+                  </div>
+                </div>
+
+                <div class="project-links">
+                  <a
+                    href="https://github.com/ghufron111/travel"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn project-btn-primary"
+                  >
+                    <span>Lihat Repositori</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Contact -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Hubungi Saya</span>
+            <h2 class="section-title">Mari Berkolaborasi</h2>
+            <p class="section-desc">
+              Tertarik untuk berdiskusi tentang proyek pengembangan web, implementasi Machine Learning, atau peluang karir? Jangan ragu untuk menghubungi saya.
+            </p>
+          </div>
+
+          <div class="contact-card-main interactive-card">
+            <h3>Siap Mewujudkan Ide Digital Anda</h3>
+            <p>
+              Saya terbuka untuk pekerjaan purnawaktu, freelance, maupun kolaborasi proyek teknologi.
+            </p>
+
+            <div class="contact-channels-grid">
+              <!-- Email Channel -->
+              <a
+                href="mailto:ghufrontamami1@gmail.com"
+                class="contact-channel-item"
+                title="Kirim Pesan Email"
+              >
+                <div class="channel-icon">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="channel-title">Email Langsung</div>
+                <div class="channel-subtitle">ghufrontamami1@gmail.com</div>
+              </a>
+
+              <!-- LinkedIn Channel -->
+              <a
+                href="https://www.linkedin.com/in/ghufron-tamami/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-channel-item"
+                title="Buka LinkedIn"
+              >
+                <div class="channel-icon">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                  </svg>
+                </div>
+                <div class="channel-title">LinkedIn Profile</div>
+                <div class="channel-subtitle">ghufron-tamami</div>
+              </a>
+
+              <!-- GitHub Channel -->
+              <a
+                href="https://github.com/ghufron111"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-channel-item"
+                title="Lihat Repositori GitHub"
+              >
+                <div class="channel-icon">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                  </svg>
+                </div>
+                <div class="channel-title">GitHub Profile</div>
+                <div class="channel-subtitle">@ghufron111</div>
+              </a>
+            </div>
+
+            <div>
+              <button class="btn btn-primary" data-copy-email="ghufrontamami1@gmail.com">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Salin Alamat Email</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer">
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-text">
+            <p>&copy; 2025 <strong>Ghufron Tamami</strong>. Dibuat dengan HTML5, Modern CSS & Vanilla JavaScript.</p>
+          </div>
+
+          <div class="footer-links">
+            <a href="#home">Beranda</a>
+            <a href="#about">Tentang</a>
+            <a href="#resume">Resume</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="https://github.com/ghufron111" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/ghufron-tamami/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Floating Back to Top with Scroll Progress SVG Ring -->
+    <button id="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
+      <svg class="progress-ring" width="48" height="48" viewBox="0 0 48 48">
+        <circle id="btt-progress-circle" cx="24" cy="24" r="18"></circle>
+      </svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <!-- Toast Notification Popup -->
+    <div id="toast-notification" role="status" aria-live="polite"></div>
+
+    <!-- Main JavaScript Logic -->
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
